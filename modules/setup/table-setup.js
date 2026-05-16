@@ -10,8 +10,10 @@ export const setupTable = () => {
 
 export const setupFullArea = () => {
     let toAdd = document.querySelector("#spreadsheet");
-    let workWidth = 100 * config.dimensions.columns;
-    let workHeight = 30 * config.dimensions.rows;
+    config.dimensions.columns = [130,110,130,130,90,130,130,230,130,130];
+    config.dimensions.rows = [30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30];
+    let workWidth = config.dimensions.columns.reduce((a, b) => a + b);
+    let workHeight = config.dimensions.rows.reduce((a, b) => a + b);
     toAdd.style.width = workWidth + 30 + "px";
     toAdd.style.height = workHeight + 30 + "px";
     toAdd.style.gridTemplateColumns = `30px ${workWidth}px`;
@@ -21,8 +23,8 @@ export const setupFullArea = () => {
 export const setupColumnsBar = () => {
     let targetArea = document.querySelector("#columns-bar");
     targetArea.innerHTML = "";
-    targetArea.style.gridTemplateColumns = `repeat(${config.dimensions.columns}, 100px)`;
-    for(let i = 0; i < config.dimensions.columns; i++) {
+    targetArea.style.gridTemplateColumns = getTemplateString(config.dimensions.columns);
+    for(let i = 0; i < config.dimensions.columns.length; i++) {
         let toAddColumn = buildElement({
             type: "div",
             id: "column-" + ( i + 1),
@@ -32,11 +34,19 @@ export const setupColumnsBar = () => {
     }
 }
 
+const getTemplateString = (dimensions) => {
+    let result = "";
+    dimensions.forEach((item) => {
+            result += item + "px ";
+    });
+    return result.trim();
+}
+
 export const setupRowsBar = () => {
     let targetArea = document.querySelector("#rows-bar");
     targetArea.innerHTML = "";
-    targetArea.style.gridTemplateRows = `repeat(${config.dimensions.rows}, 30px)`;
-    for(let i = 0; i < config.dimensions.rows; i++) {
+    targetArea.style.gridTemplateRows = getTemplateString(config.dimensions.rows);
+    for(let i = 0; i < config.dimensions.rows.length; i++) {
         let toAddRow = buildElement({
             type: "div",
             id: "row-" + (i + 1),
@@ -49,18 +59,18 @@ export const setupRowsBar = () => {
 export const setupWorkArea = () => {
     let targetArea = document.querySelector("#workArea");
     targetArea.innerHTML = "";
-    targetArea.style.gridTemplateColumns = `repeat(${config.dimensions.columns}, 100px)`;
-    targetArea.style.width = `${100 * config.dimensions.columns}px`;
-    targetArea.style.height = `${30 * config.dimensions.rows}px`;
-    for(let i = 0; i < config.dimensions.rows; i++) {
+    targetArea.style.gridTemplateColumns = getTemplateString(config.dimensions.columns);
+    targetArea.style.width = `${config.dimensions.columns.reduce((a, b) => a + b)}px`;
+    targetArea.style.height = `${config.dimensions.rows.reduce((a, b) => a + b)}px`;
+    for(let i = 0; i < config.dimensions.rows.length; i++) {
 
-        for(let j = 0; j < config.dimensions.columns; j++) {
+        for(let j = 0; j < config.dimensions.columns.length; j++) {
             let toAddColumn = buildElement({
                 type: "div",
                 id: `${i + 1}-${j + 1}`,
                 class: "sheet-column"
             })
-            toAddColumn.style.width = "100px";
+            toAddColumn.style.width = config.dimensions.columns[j] + "px";
             targetArea.appendChild(toAddColumn);
         }
     }
@@ -77,7 +87,8 @@ export const mergeCells = () => {
             document.getElementById(cell).remove();
         })
     })
+}
 
-
+const getDistance = (start, howMany) => {
 
 }

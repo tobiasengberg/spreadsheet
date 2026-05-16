@@ -14,6 +14,30 @@ export const eventListeners = {}
 
 export const loadEventListeners = () => {
 
+    document.querySelector("#main-menu").addEventListener("click", (e) => {
+        if(e.target.id === "Reset-btn") {
+            config.dimensions = {
+                    rows: [30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+                    columns: [130,130,130,130,130,130,130,130,130,130],
+                };
+            config.selection = [];
+            config.content = [{
+                value: 681,
+                id: "5-6",
+                column: 6,
+                row: 5,
+                refs: []
+            }];
+                config.mergeData = [];
+                config.tabChoice = "table-menu",
+                config.styling = {
+                    "8-7": { color: "purple" },
+                }
+            }
+        reRender(0);
+        }
+    );
+
     document.querySelector("#columns-bar").addEventListener("click", (e) => {
         let column = e.target.id.split("column-")[1];
         removePreviouslySelected();

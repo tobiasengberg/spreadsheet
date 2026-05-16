@@ -4,6 +4,7 @@ import {config} from "../data/config.js";
 export const applyStyling = () => {
     config.selection.forEach((item) => document.getElementById(item).classList.add("selected"));
     let styledEntries = Object.keys(config.styling);
+    console.log(config.styling);
     styledEntries.forEach((item) => {
         let target = document.getElementById(item);
         let customStyles = config.styling[item];
