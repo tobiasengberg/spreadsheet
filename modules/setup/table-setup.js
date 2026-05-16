@@ -79,8 +79,6 @@ export const setupWorkArea = () => {
 export const getMergeWidthAndHeight = (item) => {
     let [width, height] = [0,0];
     let [row, column] = item.origin.split('-').map(Number);
-    console.log(row);
-    console.log(column);
     for(let i = column - 1; i < (column - 1 + item.spans[1]); i++){
         width += config.dimensions.columns[i];
     }
@@ -100,9 +98,7 @@ export const mergeCells = () => {
         cellOrigin.style.gridRow = "span " + item.spans[0];
         cellOrigin.style.gridColumn = "span " + item.spans[1];
         let {width, height} = getMergeWidthAndHeight(item);
-        //cellOrigin.style.width = 100 * item.spans[1] + "px";
         cellOrigin.style.width = width + "px";
-        //cellOrigin.style.height = 30 * item.spans[0] + "px";
         cellOrigin.style.height = height + "px";
         item.suppress.forEach((cell) => {
             document.getElementById(cell).remove();

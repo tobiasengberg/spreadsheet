@@ -43,7 +43,6 @@ export const addSingleSelected = (id) => {
     selectedElement.classList.add("selected");
 }
 
-// Todo: handle merge dimensions
 const getDimensions = (id) => {
     let merge = config.mergeData.filter(item => item.origin === id);
     if(merge.length > 0) {

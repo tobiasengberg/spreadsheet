@@ -4,6 +4,7 @@ import {formatCommands} from "./format-commands/format-commands.js";
 import {chartCommands} from "./chart-commands/chart-commands.js";
 
 export const runCommand = (id) => {
+    if(nonFunctions.includes(id)) return;
     switch (config.tabChoice) {
         case "table-menu":
             tableCommands[id]();
@@ -32,3 +33,5 @@ export const getButton = (button) => {
     }
     return newButton;
 }
+
+const nonFunctions = ["color-picker", "border-style"];
