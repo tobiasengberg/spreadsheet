@@ -42,18 +42,23 @@ export const addSingleSelected = (id) => {
     selectedElement.classList.add("selected");
 }
 
+const getDimensions = (id) => {
+    let [row, column] = id.split('-');
+    return {
+        "width": config.dimensions.columns[parseInt(column) - 1],
+        "height": config.dimensions.rows[parseInt(row) - 1],
+    };
+}
+
 export const setSelectRectangle = (e) => {
-    let selectRectangle;
-    if(!document.getElementById("selectRectangle")) {
-        selectRectangle = getSelectRectangle(100, 30);
-        selectRectangle.setAttribute("id", "selectRectangle");
-        document.getElementById("workArea").appendChild(selectRectangle);
-    }
-    selectRectangle = document.getElementById("selectRectangle");
-    // selectRectangle.setAttribute("width", e.target.offsetWidth + "px");
-    // selectRectangle.setAttribute("height", e.target.offsetHeight + "px");
+    let element = document.getElementById("selectRectangle");
+    if(element) element.remove();
+    let {width, height} = getDimensions(e.target.id);
+    let selectRectangle = getSelectRectangle(width, height);
+    selectRectangle.setAttribute("id", "selectRectangle");
     selectRectangle.style.top = e.target.offsetTop + "px";
     selectRectangle.style.left = e.target.offsetLeft + "px";
+    document.getElementById("workArea").appendChild(selectRectangle);
 };
 
 export const getSelectRectangle = (width, height) => {
@@ -61,25 +66,29 @@ export const getSelectRectangle = (width, height) => {
     svg.setAttribute("width", `calc(${width}px + 0px)`);
     svg.setAttribute("height", `calc(${height}px + 0px)`);
     let path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path1.setAttribute("d", "M 0 0 L 100 0");
+    path1.setAttribute("d", `M 0 0 L ${width} 0`);
     path1.setAttribute("stroke", "red");
     path1.setAttribute("fill", "none");
     path1.setAttribute("stroke-width", "1px");
+    path1.setAttribute("id", "select-north");
     let path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path2.setAttribute("d", "M 100 0 L 100 30");
+    path2.setAttribute("d", `M ${width} 0 L ${width} ${height}`);
     path2.setAttribute("stroke", "red");
     path2.setAttribute("fill", "none");
     path2.setAttribute("stroke-width", "1px");
+    path2.setAttribute("id", "select-east");
     let path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path3.setAttribute("d", "M 100 30 L 0 30");
+    path3.setAttribute("d", `M ${width} ${height} L 0 ${height}`);
     path3.setAttribute("stroke", "red");
     path3.setAttribute("fill", "none");
     path3.setAttribute("stroke-width", "1px");
+    path3.setAttribute("id", "select-south");
     let path4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path4.setAttribute("d", "M 0 30 L 0 0");
+    path4.setAttribute("d", `M 0 ${height} L 0 0`);
     path4.setAttribute("stroke", "red");
     path4.setAttribute("fill", "none");
     path4.setAttribute("stroke-width", "1px");
+    path4.setAttribute("id", "select-west");
     let circle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle1.setAttribute("cx", "0");
     circle1.setAttribute("cy", "0");

@@ -10,7 +10,7 @@ export const setupTable = () => {
 
 export const setupFullArea = () => {
     let toAdd = document.querySelector("#spreadsheet");
-    config.dimensions.columns = [130,110,130,130,90,130,130,230,130,130];
+    config.dimensions.columns = [130,110,130,130,90,130,130,230,130,130,70,110,140,80,50];
     config.dimensions.rows = [30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30];
     let workWidth = config.dimensions.columns.reduce((a, b) => a + b);
     let workHeight = config.dimensions.rows.reduce((a, b) => a + b);

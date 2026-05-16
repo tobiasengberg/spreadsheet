@@ -57,7 +57,6 @@ export const loadEventListeners = () => {
     document.querySelector("#inspector-main").addEventListener("click", (e) => {
         eventListeners.inspectorMain = true;
         if(e.target.id === config.tabChoice) return;
-        console.log(e);
         runCommand(e.target.id);
         reRender(1);
     });

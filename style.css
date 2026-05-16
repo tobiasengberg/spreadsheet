@@ -1,10 +1,10 @@
 :root {
     --sheet-font-size: 14px;
-    --sheet-background-color: hsl(219, 100%, 95%);
+    --sheet-background-color: hsl(219, 100%, 97%);
     --sheet-color: hsl(219, 20%, 20%);
-    --bars-background-color: hsl(219, 80%, 85%);
-    --inspector-background-color: hsl(219, 100%, 96%);
-    --menu-background-color: hsl(219, 56%, 55%);
+    --bars-background-color: hsl(212, 40%, 85%);
+    --inspector-background-color: hsl(219, 100%, 98%);
+    --menu-background-color: hsl(221, 30%, 55%);
 }
 
 * {
