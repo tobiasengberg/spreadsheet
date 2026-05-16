@@ -3632,11 +3632,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tobiasengberg/Documents/Profile coding/apps/react/cart/cart-backend/cart-backend/cart-backend.csproj",
+      "projectUniqueName": "/Users/tobiasengberg/Downloads/Spreadsheet/apps/react/cart/cart-backend/cart-backend/cart-backend.csproj",
       "projectName": "cart-backend",
-      "projectPath": "/Users/tobiasengberg/Documents/Profile coding/apps/react/cart/cart-backend/cart-backend/cart-backend.csproj",
+      "projectPath": "/Users/tobiasengberg/Downloads/Spreadsheet/apps/react/cart/cart-backend/cart-backend/cart-backend.csproj",
       "packagesPath": "/Users/tobiasengberg/.nuget/packages/",
-      "outputPath": "/Users/tobiasengberg/Documents/Profile coding/apps/react/cart/cart-backend/cart-backend/obj/",
+      "outputPath": "/Users/tobiasengberg/Downloads/Spreadsheet/apps/react/cart/cart-backend/cart-backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/tobiasengberg/.nuget/NuGet/NuGet.Config"
@@ -3663,7 +3663,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
@@ -3723,7 +3723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.202/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
