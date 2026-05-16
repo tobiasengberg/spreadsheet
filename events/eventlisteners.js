@@ -92,7 +92,7 @@ export const loadEventListeners = () => {
 
 const handleSelectedRange = (e) => {
     let added = addOrRemoveSelected(e.target.id);
-    added ? setSelectRectangle(e) : removeSelectRectangle();
+    if(added && config.selection.length === 2) removeSelectRectangle();
     if(config.selection.length === 0) {
         document.removeEventListener("keydown", handleKeyDown);
         eventListeners.keyDownOnSelect = false;

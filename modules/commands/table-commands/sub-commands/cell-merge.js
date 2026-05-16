@@ -13,9 +13,7 @@ export const mergeCells = () => {
     suppress.forEach((item) => {
         delete config.styling[item];
         let remove = config.content.filter((entry) => entry.id === item);
-        console.log(remove);
         let target = config.content.findIndex((entry) => entry.id === origin);
-        console.log(target);
         let suppressedContent = "";
         if(remove.length > 0) suppressedContent += remove[0].value;
         if(target === -1 && suppressedContent.length > 0) {

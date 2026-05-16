@@ -1,5 +1,6 @@
 import {config} from "../data/config.js";
 import {eventListeners} from "../../events/eventlisteners.js";
+import {getMergeWidthAndHeight} from "../setup/table-setup.js";
 
 export const removePreviouslySelected = () => {
     config.selection.forEach((element) => {
@@ -42,7 +43,16 @@ export const addSingleSelected = (id) => {
     selectedElement.classList.add("selected");
 }
 
+// Todo: handle merge dimensions
 const getDimensions = (id) => {
+    let merge = config.mergeData.filter(item => item.origin === id);
+    if(merge.length > 0) {
+        let {width, height} = getMergeWidthAndHeight(merge[0]);
+        return {
+            "width": width,
+            "height": height,
+        };
+    }
     let [row, column] = id.split('-');
     return {
         "width": config.dimensions.columns[parseInt(column) - 1],
