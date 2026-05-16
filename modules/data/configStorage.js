@@ -17,4 +17,5 @@ export const loadConfigData = () => {
     if(stylingHistory) {
         config.styling = JSON.parse(stylingHistory);
     }
+
 }

@@ -35,5 +35,9 @@ const alterStyling = (kind, getValue) => {
             config.styling[sel] = { [kind]: value };
         }
     });
+    Object.keys(config.styling).forEach(item => {
+            if(Object.keys(config.styling[item]).length === 0) delete config.styling[item];
+        }
+    )
 }
 
