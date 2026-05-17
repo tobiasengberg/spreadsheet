@@ -14,6 +14,23 @@ export const eventListeners = {}
 
 export const loadEventListeners = () => {
 
+    document.addEventListener("paste", async (e) => {
+        const text = await navigator.clipboard.readText();
+        if(Object.hasOwn(eventListeners, "clipboard") && text === eventListeners.clipboard){
+            const ids = text.split(",");
+            const first = config.selection[0];
+            config.styling[first] = config.styling[ids[0]];
+            reRender(1);
+        } else {
+            delete eventListeners.clipboard;
+        }
+    })
+
+    document.addEventListener("copy", async (e) => {
+        eventListeners.clipboard = config.selection.toString();
+        await navigator.clipboard.writeText(config.selection.toString());
+    })
+
     document.querySelector("#main-menu").addEventListener("click", (e) => {
         if(e.target.id === "Reset-btn") {
             config.dimensions = {
