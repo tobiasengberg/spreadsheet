@@ -69,9 +69,17 @@ export const setupWorkArea = () => {
                 type: "div",
                 id: `${i + 1}-${j + 1}`,
                 class: "sheet-column"
-            })
+            });
+            let ghost = buildElement({
+                type: "div",
+                class: "ghost-div"
+            });
+            ghost.appendChild(toAddColumn);
+            ghost.style.width = config.dimensions.columns[j] + "px";
+            ghost.style.height = config.dimensions.rows[i] + "px";
             toAddColumn.style.width = config.dimensions.columns[j] + "px";
-            targetArea.appendChild(toAddColumn);
+            toAddColumn.style.height = config.dimensions.rows[i] + "px";
+            targetArea.appendChild(ghost);
         }
     }
 }

@@ -9,6 +9,7 @@ import {
 } from "../modules/selecting/cells-selecting.js";
 import {getTabChoice} from "../modules/navigation/inspector.js";
 import {runCommand} from "../modules/commands/commands.js";
+import {cellPaste} from "../modules/copying/cell-copying.js";
 
 export const eventListeners = {}
 
@@ -17,9 +18,7 @@ export const loadEventListeners = () => {
     document.addEventListener("paste", async (e) => {
         const text = await navigator.clipboard.readText();
         if(Object.hasOwn(eventListeners, "clipboard") && text === eventListeners.clipboard){
-            const ids = text.split(",");
-            const first = config.selection[0];
-            config.styling[first] = config.styling[ids[0]];
+                cellPaste(text);
             reRender(1);
         } else {
             delete eventListeners.clipboard;
@@ -46,12 +45,12 @@ export const loadEventListeners = () => {
                 refs: []
             }];
                 config.mergeData = [];
-                config.tabChoice = "table-menu",
+                config.tabChoice = "table-menu";
                 config.styling = {
                     "8-7": { color: "purple" },
                 }
             }
-        reRender(0);
+        reRender(1);
         }
     );
 

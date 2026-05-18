@@ -88,14 +88,23 @@ body {
     margin: 10px;
 }
 
-#spreadsheet div {
-    border: 1px solid white;
+.ghost-div {
+    border: 1px solid #f3f3f3;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.sheet-column {
+
+    position: absolute;
+    inset: -1px;
+
 }
 
 #spreadsheet input {
     width: 100%;
     height: 100%;
-    background-color: hsl(219, 90%, 90%);;
+    background-color: hsl(219, 90%, 90%);
     border: none;
 
 }
@@ -131,6 +140,7 @@ body {
 #workArea {
     position: relative;
     background-color: var(--sheet-background-color);
+    background-color: white;
     color: var(--sheet-color);
     grid-column: 2;
     grid-row: 2;
