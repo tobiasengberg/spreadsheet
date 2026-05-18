@@ -75,10 +75,10 @@ export const setupWorkArea = () => {
                 class: "ghost-div"
             });
             ghost.appendChild(toAddColumn);
+            toAddColumn.style.width = parseInt(config.dimensions.columns[j]) + 1 + "px";
+            toAddColumn.style.height = parseInt(config.dimensions.rows[i]) + 1 + "px";
             ghost.style.width = config.dimensions.columns[j] + "px";
             ghost.style.height = config.dimensions.rows[i] + "px";
-            toAddColumn.style.width = config.dimensions.columns[j] + "px";
-            toAddColumn.style.height = config.dimensions.rows[i] + "px";
             targetArea.appendChild(ghost);
         }
     }
@@ -105,11 +105,16 @@ export const mergeCells = () => {
         let cellOrigin = document.getElementById(item.origin);
         cellOrigin.style.gridRow = "span " + item.spans[0];
         cellOrigin.style.gridColumn = "span " + item.spans[1];
+        cellOrigin.parentElement.style.gridRow = "span " + item.spans[0];
+        cellOrigin.parentElement.style.gridColumn = "span " + item.spans[1];
         let {width, height} = getMergeWidthAndHeight(item);
-        cellOrigin.style.width = width + "px";
-        cellOrigin.style.height = height + "px";
+        cellOrigin.style.width = width + 1 + "px";
+        cellOrigin.style.height = height + 1 + "px";
+        cellOrigin.parentElement.style.width = width + "px";
+        cellOrigin.parentElement.style.height = height + "px";
         item.suppress.forEach((cell) => {
-            document.getElementById(cell).remove();
+            document.getElementById(cell).parentElement.remove();
+
         })
     })
 }
