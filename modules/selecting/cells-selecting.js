@@ -65,8 +65,9 @@ export const setSelectRectangle = (e) => {
     let {width, height} = getDimensions(e.target.id);
     let selectRectangle = getSelectRectangle(width, height);
     selectRectangle.setAttribute("id", "selectRectangle");
-    selectRectangle.style.top = e.target.offsetTop + "px";
-    selectRectangle.style.left = e.target.offsetLeft + "px";
+    console.log(e);
+    selectRectangle.style.top = e.target.parentElement.offsetTop + "px";
+    selectRectangle.style.left = e.target.parentElement.offsetLeft + "px";
     document.getElementById("workArea").appendChild(selectRectangle);
 };
 
