@@ -28,7 +28,6 @@ export const formatCommands = {
 const alterStyling = (kind, getValue) => {
     config.selection.forEach(sel => {
         let value = getValue();
-        console.log(value);
         if(config.styling.hasOwnProperty(sel)) {
             config.styling[sel][kind] = value;
         } else {
