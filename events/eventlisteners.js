@@ -113,7 +113,7 @@ const handleDoubleClick = (e) => {
                     id: newKey,
                     column: parseInt(newKey.split("-")[1]),
                     row: parseInt(newKey.split("-")[0]),
-                    style: []
+                    refs: []
                 });
             } else {
                 item[0].value = e.target.value;
